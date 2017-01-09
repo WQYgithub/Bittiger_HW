@@ -1,2 +1,2 @@
 # Bittiger_HW
-I put all the hw in one java file.
+I put all my homeworks in one java file.
