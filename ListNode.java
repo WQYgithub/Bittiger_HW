@@ -3,16 +3,16 @@ package list;
 public class ListNode {
 	int val;
 	ListNode next;
-	ListNode (int x) { 
-		val = x; 
+	ListNode (int x) {
+		val = x;
 	}
-	
+
 	//codeLab_week1
 	public void deleteNode (ListNode node) {
 		node.val = node.next.val;
 		node.next = node.next.next;
 	}
-	
+
 	public ListNode deleteNthFromEnd (ListNode head, int n) {
 //		ListNode result = head;
 //		if (result != null)
@@ -23,7 +23,7 @@ public class ListNode {
 //				size ++;
 //				result = result.next;
 //			}
-//			
+//
 //			int place = size-n+1;
 //			result = head;
 //			if (place == size)
@@ -44,12 +44,12 @@ public class ListNode {
 //				result.next = result.next.next;
 //			}
 //		}
-//		
+//
 //		return head;
-		
+
 		ListNode dummy = new ListNode(-1);
 		dummy.next = head;
-		
+
 		if (dummy.next != null)
 		{
 			int size = 0;
@@ -58,7 +58,7 @@ public class ListNode {
 				size++;
 				dummy = dummy.next;
 			}
-			
+
 			int place = size-n+1;
 			dummy = head.next;
 			ListNode temp = dummy;
@@ -70,36 +70,36 @@ public class ListNode {
 			temp.next = temp.next.next;
 			deleted = null;
 		}
-		
+
 		return dummy.next;
-		
+
 //		ListNode dummy = new ListNode(-1);
 //		dummy.next = head;
 //		ListNode fast = dummy;
 //		ListNode slow = dummy;
-//		
+//
 //		while (n > 0)
 //		{
 //			fast = fast.next;
 //			n--;
 //		}
-//		
+//
 //		while (fast.next != null)
 //		{
 //			fast = fast.next;
 //			slow = slow.next;
 //		}
-//		
+//
 //		slow.next = slow.next.next;
-//		
+//
 //		if (head.next == null)
 //		{
 //			head = null;
 //		}
-//		
+//
 //		return dummy.next;
 	}
-	
+
 	public ListNode insertNode (ListNode head, ListNode node) {
 		//corner case
 		if (head == null) {
@@ -118,7 +118,7 @@ public class ListNode {
 		dummy.next = node;
 		return dummy.next;
 	}
-	
+
 //	public ListNode reverseList (ListNode head) {
 ////		ListNode pre = null;
 ////		ListNode cur = head;
@@ -129,44 +129,44 @@ public class ListNode {
 ////			cur = temp;
 ////		}
 ////		return pre;
-//		
+//
 ////		return helper(null, head);
-//		
+//
 //		if (head == null || head.next == null) {
 //			return head;
 //		}
-//		
+//
 //		ListNode nextNode = head.next;
 //		ListNode reverseHead = reverseList(nextNode);
 //		nextNode.next = head;
 //		head.next = null;
-//		
+//
 //		return reverseHead;
 //	}
-	
+
 //	public ListNode helper (ListNode pre, ListNode head) {
 //		if (head == null) {
 //			return pre;
 //		}
-//		
+//
 //		ListNode tmp = head.next;
 //		head.next = pre;
 //		pre = head;
 //		head = tmp;
 //		return helper(pre, head);
 //	}
-	
-	
-	
+
+
+
 	//hw_week1
-	
+
 	//369. Plus One Linked List
 	public ListNode plusOne (ListNode head) {
 		//reverse head list
 		ListNode newHead = reverseList(head);
 		ListNode dummy = new ListNode(-1);
 		dummy.next = newHead;
-		int one = 1, result = newHead.val+one;
+		int one = 1, result = newHead.val+one; // better to use int carry = 1
 		//add one from newHead to before last
 		while (newHead.next != null) {
 			result = newHead.val+one;
@@ -184,9 +184,9 @@ public class ListNode {
 			}
 		}
 		//if condition add last
-		if (one != 0) {		
+		if (one != 0) {
 			result = newHead.val+one;
-			if (result == 10) {			
+			if (result == 10) {
 				newHead.val = result%10;
 				ListNode last = new ListNode(one);
 				newHead.next = last;
@@ -200,19 +200,19 @@ public class ListNode {
 		//get result
 		return head;
 	}
-	
+
 	public ListNode reverseList (ListNode head) {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		
+
 		ListNode nextNode = head.next;
 		ListNode reverseHead = reverseList(nextNode);
 		nextNode.next = head;
 		head.next = null;
 		return reverseHead;
 	}
-	
+
 //	public ListNode plusOne (ListNode head) {
 //		if (head == null) {
 //			return null;
@@ -234,7 +234,7 @@ public class ListNode {
 //		head = head.next;
 //		return plusOne(head);
 //	}
-	
+
 //	public int[] plusOne(int[] digits) {
 //		//corner case
 //		if (digits.length == 0) {
@@ -259,7 +259,7 @@ public class ListNode {
 //        }
 //        return result3;
 //    }
-	
+
 	// 66. Plus One
 	public int [] plusOne (int [] digits) {
 		int length = digits.length;
@@ -278,7 +278,7 @@ public class ListNode {
 				one = result/10;
 			}
 		}
-		
+
 		if (one != 0) {
 			result = one+digits[0];
 			if (result < 10) {
@@ -297,8 +297,8 @@ public class ListNode {
 		}
 		return digits;
 	}
-	
-	// 67. AddBinary 
+
+	// 67. AddBinary
 	public String addBinary(String a, String b) {
 		//corner case
 		if (a.length() == 0) {
@@ -314,11 +314,11 @@ public class ListNode {
         int [] arrayA = new int[lengthA];
         int [] arrayB = new int[lengthB];
         for (int i = 0; i <= lengthA-1; i++) {
-        	arrayA[i] = Integer.parseInt("" + a.charAt(i));
+        	arrayA[i] = Integer.parseInt("" + a.charAt(i)); // a.charAt(i) - '0'
         }
         for (int i = 0; i <= lengthB-1; i++) {
         	arrayB[i] = Integer.parseInt("" + b.charAt(i));
-        }       
+        }
         int minLength = 0;
         if (lengthA >= lengthB) {
         	minLength = lengthB;
@@ -394,7 +394,7 @@ public class ListNode {
         }
         return result.reverse().toString();
     }
-	
+
 	//151. Reverse Words in a String
 	public String reverseWords(String s) {
 		//corner case
@@ -409,7 +409,7 @@ public class ListNode {
 		}
 		return result.toString().trim();
     }
-	
+
 	//61. Rotate List
 	public ListNode rotateRight(ListNode head, int k) {
 		//corner case
@@ -444,8 +444,8 @@ public class ListNode {
 		tmp.next = head;
 		return result;
 	}
-	
-	
+
+
 	//8. String to Integer (atoi)
 	public int myAtoi(String str) {
 		//corner case
@@ -501,7 +501,7 @@ public class ListNode {
 		}
 		return (int)result;
     }
-	
+
 	//1. Two Sum
 	public int[] twoSum(int[] nums, int target) {
         int [] result = new int[2];
@@ -517,7 +517,7 @@ public class ListNode {
         }
         return result;
     }
-	
+
 	//167. Two Sum II - Input array is sorted
 	public int[] twoSumTwo(int[] numbers, int target) {
         int [] result = new int[2];
@@ -533,7 +533,7 @@ public class ListNode {
         }
         return result;
     }
-	
+
 	//75. Sort Colors
 	public void sortColors(int[] nums) {
         int length = nums.length;
@@ -551,7 +551,7 @@ public class ListNode {
         	System.out.println(i);
         }
     }
-	
+
 	//21. Merge Two Sorted Lists
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         //corner case
@@ -591,7 +591,7 @@ public class ListNode {
 		//get result
 		return result.next;
     }
-	
+
 	//189. Rotate Array
 	public void rotate(int[] nums, int k) {
         //corner case
@@ -619,7 +619,7 @@ public class ListNode {
 			nums[i] = newNums[i];
 		}
     }
-	
+
 	//48. Rotate Image
     public void rotate(int[][] matrix) {
     	//corner case
@@ -638,9 +638,9 @@ public class ListNode {
         	for (int j = 0; j < n; j++) {
         		matrix[i][j] = rotateM[i][j];
         	}
-        } 
+        }
     }
-    
+
     //28. Implement strStr()
     public int strStr(String haystack, String needle) {
         //corner case
@@ -670,7 +670,7 @@ public class ListNode {
     	int n = length1 -length2;
     	for (int i = 0; i <=n; i++) {
     		int count = 0;
-    		for (int j = 0; j <= length2-1; j++) {			
+    		for (int j = 0; j <= length2-1; j++) {
     			if (haystack.charAt(i+j) == needle.charAt(j)) {
     				count++;
     			}
@@ -685,7 +685,7 @@ public class ListNode {
     	}
     	return result;
     }
-	
+
     //344. Reverse String
 	public String reverseString(String s) {
 		//corner case
@@ -700,7 +700,7 @@ public class ListNode {
         }
         return reverseS.toString();
     }
-	
+
 	//415. Add Strings
 	public String addStrings(String num1, String num2) {
         //corner case
@@ -721,7 +721,7 @@ public class ListNode {
 				if (j >= 0) {
 					sum = (num1.charAt(i)-'0')+(num2.charAt(j)-'0')+add;
 					add = sum/10;
-					sum = sum%10;				
+					sum = sum%10;
 					result.append(sum);
 					j--;
 				}
@@ -778,9 +778,9 @@ public class ListNode {
 				result.append(1);
 			}
 		}
-		return result.reverse().toString();	
+		return result.reverse().toString();
     }
-	
+
 	//Find if an array can be divided into two subArrays of equal sum
 	public boolean beDivided (int [] array) {
 		//corner case
@@ -808,38 +808,25 @@ public class ListNode {
 		}
 		return isDivided;
 	}
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ListNode node1 = new ListNode(1);
 		ListNode node2 = new ListNode(2);
 		ListNode node3 = new ListNode(3);
 		ListNode node4 = new ListNode(4);
-		
+
 		node1.next = node2;
 		node2.next = node3;
 		node3.next = node4;
 //		node2 = null;
 //		System.out.println(node1.next.val);
-		
+
 //		ListNode node5 = new ListNode(9);
 //		System.out.println(node1.plusOne(node1).val);
-		
+
 //		int [] a = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
 //		int [] b = {1, 2};
 //		System.out.println(node1.addStrings("1", "9"));
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
